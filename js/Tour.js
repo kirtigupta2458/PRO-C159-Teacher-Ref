@@ -1,38 +1,14 @@
 AFRAME.registerComponent("tour", {
   schema: {
     state: { type: "string", default: "places-list" },
-    selectedCard: { type: "string", default: "#card1" },
+    
   },
   init: function () {
     this.placesContainer = this.el;
     this.createCards();
   },
 
-  tick: function () {
-    const { state } = this.el.getAttribute("tour");
-
-    if (state === "view") {
-      this.hideEl([this.placesContainer]);
-      this.showView();
-    }
-  },
-  hideEl: function (elList) {
-    elList.map(el => {
-      el.setAttribute("visible", false);
-    });
-  },
-
-  showView: function () {
-    const { selectedCard } = this.data;
-
-    //Set the 360 degree image to the sky element.
-    const skyEl = document.querySelector("#main-container");
-
-    skyEl.setAttribute("material", {
-      src: `./assets/360_images/${selectedCard}/place-0.jpg`,
-      color: "white"
-    });
-  },
+ 
 
   createCards: function () {
     const thumbNailsRef = [
